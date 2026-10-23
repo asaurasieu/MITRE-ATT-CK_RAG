@@ -4,9 +4,8 @@ import os
 import sys
 from pathlib import Path
 
-from dotenv import load_dotenv
-
 import streamlit as st
+from dotenv import load_dotenv
 
 # Logger configuration
 logger = logging.getLogger(__name__)
@@ -124,7 +123,7 @@ with col2:
     st.metric("Knowledge Base", "Enterprise ATT&CK")
 
 with col3:
-    st.metric("Retrieval", "Top 3")
+    st.metric("Retrieval", "Top 8")
 
 st.divider()
 
@@ -132,8 +131,7 @@ st.divider()
 st.subheader("Analyze suspicious activity")
 
 st.write(
-    "Describe the observed behaviour to identify relevant "
-    "MITRE ATT&CK techniques."
+    "Describe the observed behaviour to identify relevant MITRE ATT&CK techniques."
 )
 
 with st.form("threat_analysis_form"):
@@ -184,10 +182,7 @@ if analyze:
 
             except Exception:
                 logger.exception("Threat analysis failed")
-                st.error(
-                    "The analysis could not be completed. "
-                    "Please try again later."
-                )
+                st.error("The analysis could not be completed. Please try again later.")
 
 # Analysis results
 if st.session_state.analysis is not None:

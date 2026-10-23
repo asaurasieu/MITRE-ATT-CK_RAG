@@ -36,7 +36,7 @@ structured_llm = llm.with_structured_output(AnalysisResult)
 
 
 def retrieve_techniques(query):
-    results = vectorstore.similarity_search(query, k=3)
+    results = vectorstore.similarity_search(query, k=8)
     return results
 
 
