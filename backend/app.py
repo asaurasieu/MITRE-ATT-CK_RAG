@@ -1,14 +1,29 @@
 from flask import Flask, jsonify, request
 
-app = Flask(__name__)
+from backend.rag.rag_chain import analyze_query
 
 
-@app.route("/", methods=["GET"])
-@app.route("/health", methods=["GET"])
 def create_app():
-    data = {"message": "Hello, this is a JSON response!"}
-    return jsonify(data)
+    app = Flask(__name__)
 
+    @app.route("/chat", methods=["POST"])
+    def chat():
+        data = request.get_json(silent=True)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+        if not isinstance(data, dict):
+            return jsonify({"error": "Se esperaba un objeto JSON"}), 400
+
+        query = data.get("query")
+
+        if not isinstance(query, str) or not query.strip():
+            return jsonify({"error": "La pregunta no puede estar vacía"}), 400
+
+        try:
+            results = analyze_query(query.strip())
+            return jsonify(results)
+
+        except Exception:
+            app.logger.exception("Error durante el analisis RAG")
+            return jsonify({"error": "No se ha podido completar el análisis."}), 500
+
+    return app

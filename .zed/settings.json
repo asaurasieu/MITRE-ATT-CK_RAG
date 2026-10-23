@@ -1,0 +1,15 @@
+{
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python": {
+          "pythonPath": "/Users/anita/Documents/Projects/Notes_AI/MITRE_ATT&CK/.venv/bin/python",
+          "analysis": {
+            "autoSearchPaths": true,
+            "useLibraryCodeForTypes": true
+          }
+        }
+      }
+    }
+  }
+}

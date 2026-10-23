@@ -1,8 +1,8 @@
-flask
 streamlit
+python-dotenv
+pydantic
 langchain
 langchain-openai
 langchain-chroma
 chromadb
-python-dotenv
-requests
+tiktoken

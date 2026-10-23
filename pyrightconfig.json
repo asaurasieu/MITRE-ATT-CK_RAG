@@ -1,0 +1,9 @@
+{
+  "venvPath": "/Users/anita/Documents/Projects/Notes_AI/MITRE_ATT&CK",
+  "venv": ".venv",
+  "executionEnvironments": [
+    {
+      "root": "/Users/anita/Documents/Projects/Notes_AI/MITRE_ATT&CK"
+    }
+  ]
+}
